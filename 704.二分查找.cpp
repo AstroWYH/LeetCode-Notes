@@ -1,3 +1,4 @@
+二分查找
 
 https://www.bilibili.com/video/BV1LJ411X76n?spm_id_from=333.337.search-card.all.click
 b站的教学如上，没想到这个题上来就直接做对了。
@@ -19,7 +20,6 @@ https://blog.csdn.net/ShelleyLittlehero/article/details/80739884
 target>nums[mid]，所以left=mid+1=right，然后再计算mid=left=right，target<nums[mid]，此时right=mid-1，跟最早比起来，
 变成了left和right的位置互换了，left和right相邻，但right+1=left的位置关系，此时再while (left <= right)就会不满足，
 所以寻找结束，答案为不存在。
-
 
 class Solution {
 public:
