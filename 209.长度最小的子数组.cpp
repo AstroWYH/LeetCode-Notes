@@ -1,5 +1,24 @@
-// 明天写题解
-// https://www.bilibili.com/video/BV1V44y1s7zJ?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int slow = 0, fast = 0;
+        int sum = 0, ans = INT32_MAX, diff = 0;
+        for (; fast < nums.size(); fast++) {
+            sum += nums[fast];
+            while (sum >= target) {
+                diff = fast - slow + 1;
+                ans = min(diff, ans);
+                sum -= nums[slow];
+                slow++;
+            }
+        }
+        if (slow == 0) return 0;
+        return ans;
+    }
+};
+
+
+硬想的解法，其实还是滑动窗口的思想。
 class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) {
