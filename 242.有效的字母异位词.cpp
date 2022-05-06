@@ -1,0 +1,26 @@
+哈希 map 数组
+
+思路：记录每个字符出现的次数到map里面，然后对比两个map是否一样即可。
+
+注：map_s[s[i] - 'a']++是本题的关键，也可以用数组实现，如array[s[i]-'a']++，实际上是类似的，
+用s[i]-'a'这样的操作，可以方便地把每个字符转换成0,1,2...,25的有序数字，统计起来就容易很多。
+注：题干出现一个元素是否出现在集合的场景，就可以考虑哈希。
+注：此题用unordered_map会比用map时间上节省很多，因为一般情况下unordered_map时间复杂度为O(1)，
+map时间复杂度为O(logn)。
+注：此题unordered_map和map都对，理论上unordered_map是无序容器，为何是对的，需要真正理解“有序”和
+“无序”的概念。
+
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        unordered_map<char, int> map_s;
+        unordered_map<char, int> map_t;
+        for (int i = 0; i < s.length(); i++) {
+            map_s[s[i] - 'a']++;
+        }
+        for (int i = 0; i < t.length(); i++) {
+            map_t[t[i] - 'a']++;
+        }
+        return map_s == map_t;
+    }
+};
