@@ -13,8 +13,8 @@ map时间复杂度为O(logn)。
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        unordered_map<char, int> map_s;
-        unordered_map<char, int> map_t;
+        unordered_map<int8_t, int8_t> map_s;
+        unordered_map<int8_t, int8_t> map_t;
         for (int i = 0; i < s.length(); i++) {
             map_s[s[i] - 'a']++;
         }
