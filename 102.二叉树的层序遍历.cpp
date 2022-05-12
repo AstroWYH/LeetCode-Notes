@@ -50,7 +50,7 @@ public:
                 que.pop(); // wyh 4
                 vec.push_back(node->val);
                 if (node->left) que.push(node->left);
-                if (node->right) que.push(node->right); 
+                if (node->right) que.push(node->right);
             }
             result.push_back(vec);
         }
