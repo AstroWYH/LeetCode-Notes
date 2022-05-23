@@ -11,14 +11,19 @@
 5：举例推导dp数组。按题干公式可得，n=10时，序列为0 1 1 2 3 5 8 13 21 34 55。然后用写出的代码运行一遍，
 如果不对就在for()里打印出来，cout<<dp[i]<<endl，然后再排查错误原因。
 
+注：for()循环其实i在累加，循环体里也是i在进行递推公式，“一直让i(比如从2开始)累加到n，则dp[]数组从0~n的值就都有了”。
+
+1：虽此题不会出现，但此处可以预防空指针。
+2：此处是i<=n，因为i可以到n。
+
 class Solution {
 public:
     int fib(int n) {
-        if (n <= 1) return n;
+        if (n <= 1) return n; // wyh 1
         vector<int> dp(n + 1);
         dp[0] = 0;
         dp[1] = 1;
-        for (int i = 2; i <= n; i++) {
+        for (int i = 2; i <= n; i++) { // wyh 2
             dp[i] = dp[i - 1] + dp[i - 2];
         }
         return dp[n];
