@@ -35,6 +35,10 @@ que内此时必然全装的是“干净的下一阶段的node们”了。
 3：由于que在每次for()内动态变化，所以要在for外用“固定size”提前确定好“该阶段que的长度”。
 4：for()内遍历中，注意要每次que推出首节点后，再用vec记录阶段node，que始终“领先”vec。
 
+第一层while()：que中，处理第一层node(即root)，第一层node(即root)出去，第二层2个node进que。
+第二层while()：que中，处理第二层2个node，第二层2个node出去，第3层4个node进que。其中for()内分2段。
+...
+
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
