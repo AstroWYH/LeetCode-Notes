@@ -1,4 +1,4 @@
-二分查找
+二分法 二分查找
 
 https://www.bilibili.com/video/BV1LJ411X76n?spm_id_from=333.337.search-card.all.click
 b站的教学如上，没想到这个题上来就直接做对了。
@@ -20,6 +20,17 @@ https://blog.csdn.net/ShelleyLittlehero/article/details/80739884
 target>nums[mid]，所以left=mid+1=right，然后再计算mid=left=right，target<nums[mid]，此时right=mid-1，跟最早比起来，
 变成了left和right的位置互换了，left和right相邻，但right+1=left的位置关系，此时再while (left <= right)就会不满足，
 所以寻找结束，答案为不存在。
+
+注：看到“有序数组”要想到“二分法”。
+注：看到“O(logn)”复杂度要想到“二分法”。
+注：二分法应作为模板记住：
+1）nums边界条件判断。
+2）左右指针赋初值，left=0,right=nums.size()-1。
+3）while(left<=right)循环条件，左指针最多与右指针重叠，不能越过。
+4）while()内mid指针赋值，mid=(left+right)/2。mid指针为左右指针的中间值，向下取整。
+5）判断满足条件，if(target==nums[mid]) return mid。判断其他条件，并根据情况移动left、right左右指针。
+移动过程中，left=mid+1，right=mid-1，左右指针一般都是基于mid指针移动一位，“左移中右，右移中左”。
+6）return -1。表示while()二分法的循环过程中，最终没找到符合条件的值。
 
 class Solution {
 public:
