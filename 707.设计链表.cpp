@@ -1,5 +1,20 @@
 链表
 
+无头节点：
+        ListNode* cur = head; // cur初始指向head
+        while (cur != nullptr) { // 当前node由cur表示，最后判空也是cur
+            ...
+            cur = cur->next;
+        }
+有头节点：
+        ListNode* dummy_head = new ListNode(0);
+        dummy_head->next = head;
+        ListNode* cur = dummy_head; // cur初始指向dummy_head，cur->next指向head
+        while (cur->next != nullptr) { // 当前node由cur->next表示，最后判空也是cur->next
+            ...
+            cur = cur->next;
+        }
+
 思路：此题是很好的链表题，从链表节点LinkedNode的数据结构内部设计，到外部封装大链表MyLinkedList的
 成员函数和成员变量设计，回顾可以帮助很好的理解链表。
 
