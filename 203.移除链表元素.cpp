@@ -11,6 +11,21 @@
 
 链表
 
+无头节点：
+        ListNode* cur = head; // cur初始指向head
+        while (cur != nullptr) { // 当前node由cur表示，最后判空也是cur
+            ...
+            cur = cur->next;
+        }
+有头节点：
+        ListNode* dummy_head = new ListNode(0);
+        dummy_head->next = head;
+        ListNode* cur = dummy_head; // cur初始指向dummy_head，cur->next指向head
+        while (cur->next != nullptr) { // 当前node由cur->next表示，最后判空也是cur->next
+            ...
+            cur = cur->next;
+        }
+
 解法1：不采用虚拟头节点，考虑head和非head的情况。
 
 思路：遍历删除链表元素，画出链表图，将指向需要删除的链表节点的指针(cur->next)指向下一个链表节点即可
