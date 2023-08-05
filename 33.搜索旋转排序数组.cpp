@@ -46,3 +46,33 @@ public:
         return -1;
     }
 };
+
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+      if (nums.size() == 0) return -1;
+      if (nums.size() == 1) return nums[0] == target ? 0 : -1;
+      int mid = 0;
+      int left = 0, right = nums.size() - 1;
+      while (left <= right) {
+        mid = (left + right) / 2;
+        if (nums[mid] == target) {
+          return mid;
+        }
+        if (nums[mid] >= nums[left]) { // 这里边界判断改为nums[left]，更容易理解
+          if (nums[left] <= target && target < nums[mid]) { // 这里边界判断改为nums[left]，更容易理解
+            right = mid - 1;
+          } else {
+            left = mid + 1;
+          }
+        } else {
+          if (nums[mid] < target && target <= nums[right]) { // 这里边界判断改为nums[right]，更容易理解
+            left = mid + 1;
+          } else {
+            right = mid - 1;
+          }
+        }
+      }
+      return -1;
+    }
+};
