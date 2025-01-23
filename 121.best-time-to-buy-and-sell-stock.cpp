@@ -24,11 +24,12 @@ using namespace std;
 #include <vector>
 // @lcpr-template-end
 // @lc code=start
+
 class Solution {
 public:
   int maxProfit(vector<int> &prices) {
     int max_val = 0;
-    int cur_min = 0;
+    int cur_min = 0; // 这个最小值很重要，它在左侧被记录，无论右侧遍历到多大，它都起作用
     if (prices.size() >= 1)
       cur_min = prices[0];
     for (int i = 0; i < prices.size(); i++) {
