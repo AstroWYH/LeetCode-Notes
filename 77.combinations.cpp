@@ -1,0 +1,69 @@
+/*
+ * @lc app=leetcode.cn id=77 lang=cpp
+ * @lcpr version=30204
+ *
+ * [77] 组合
+ */
+
+
+// @lcpr-template-start
+using namespace std;
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <climits>
+#include <deque>
+#include <functional>
+#include <iostream>
+#include <list>
+#include <queue>
+#include <stack>
+#include <tuple>
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
+#include <vector>
+// @lcpr-template-end
+// @lc code=start
+
+// 灵神解法，倒序剪枝的写法更容易理解
+// 画图理解每层的i, j, d的含义
+
+class Solution {
+public:
+    vector<vector<int>> combine(int n, int k) {
+        vector<vector<int>> ans;
+        vector<int> path;
+
+        auto dfs = [&](this auto&& dfs, int i) {
+            int d = k - path.size(); // 还要选 d 个数
+            if (d == 0) { // 选好了
+                ans.emplace_back(path);
+                return;
+            }
+            for (int j = i; j >= d; j--) {
+                path.push_back(j);
+                dfs(j - 1);
+                path.pop_back(); // 恢复现场
+            }
+        };
+
+        dfs(n);
+        return ans;
+    }
+};
+// @lc code=end
+
+
+
+/*
+// @lcpr case=start
+// 4\n2\n
+// @lcpr case=end
+
+// @lcpr case=start
+// 1\n1\n
+// @lcpr case=end
+
+ */
+
